@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    #build: . -> este comando quando o dockerfile eh a nomenclatura padrao
+    build:
+      context: . #selecionando todos os arquivos do projeto
+      dockerfile: DockerFile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  test:
+    build:
+      context: . #selecionando todos os arquivos do projeto
+      dockerfile: DockerFile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app        
+    command: ["npm","run","test"]
