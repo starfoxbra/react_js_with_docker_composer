@@ -6,4 +6,4 @@ before_install:
   - docker build -t pedroaoki/react:latest -f DockerFile.dev . 
 
 script:
-  - docker run pedroaoki/react npm run test -- --coverage
+  - docker run -e CI=true pedroaoki/react npm run test -- --coverage
